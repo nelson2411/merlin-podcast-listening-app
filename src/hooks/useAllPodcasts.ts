@@ -20,12 +20,12 @@ export const useAllPodcasts = () => {
       try {
         setLoading(true)
         const { data } = await axios.get(
-          "https://itunes.apple.com/us/rss/toppodcasts/limit=10/genre=1310/json"
+          "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
         )
         console.log("first data", data)
-        const podcasts = data
-        setPodcasts(podcasts)
+        const podcasts = data.feed.entry
         console.log("podcasts", podcasts)
+        setPodcasts(podcasts)
       } catch (error) {
         setError(true)
       } finally {

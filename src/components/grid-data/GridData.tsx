@@ -13,13 +13,17 @@ const GridData = () => {
       {/* The map must be done from feed.entry in order to render the data */}
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      {podcasts &&
-        podcasts.feed.entry.map((podcast: Podcast) => (
-          <div key={podcast?.id.attributes["im:id"]}>
-            <h2>{podcast?.title.label}</h2>
-            <img src={podcast?.images[0].label} alt={podcast.title.label} />
-          </div>
-        ))}
+      {podcasts && (
+        <ul>
+          {podcasts.map((podcast: Podcast) => (
+            <li key={podcast.id.attributes["im:id"]}>
+              <img src={podcast["im:image"][0]?.label} alt="" />
+              <h2>{podcast["im:name"].label}</h2>
+              <h4>Author: {podcast["im:artist"].label}</h4>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

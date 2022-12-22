@@ -89,12 +89,29 @@ be returned from the iTunes API. The data needed is the id, title, and image.
 */
 
 export type Podcast = {
-  id: string
-  title: string
-  image: string
-  summary: string
-  country: string
-  genres: string[]
+  id: {
+    attributes: {
+      "im:id": string
+    }
+  }
+  title: {
+    label: string
+  }
+  // image: is an array
+  "im:image": [
+    {
+      label: string
+    }
+  ]
+  "im:name": {
+    label: string
+  }
+  summary: {
+    label: string
+  }
+  "im:artist": {
+    label: string
+  }
 }
 
 export type PodcastEpisode = {
