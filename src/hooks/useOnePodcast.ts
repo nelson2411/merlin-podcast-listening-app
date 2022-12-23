@@ -1,4 +1,4 @@
-import { Podcast } from "../types/podcastType"
+import { Podcast, OnePodcastInfo } from "../types/podcastType"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
@@ -14,8 +14,8 @@ id must be a number and the parameter used to fetch a single podcast is "id"
 
 */
 
-export const useOnePodcast = (id: number) => {
-  const [podcast, setPodcast] = useState<Podcast>()
+export const useOnePodcast = (id: string) => {
+  const [podcast, setPodcast] = useState<OnePodcastInfo>()
   const [error, setError] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -25,19 +25,11 @@ export const useOnePodcast = (id: number) => {
         setLoading(true)
         const { data } = await axios.get(
           `https://api.allorigins.win/get?url=${encodeURIComponent(
-            `https://itunes.apple.com/lookup?id=${id}&entity=podcastAuthor`
+            `https://itunes.apple.com/lookup?id=${id}&entity=podcastEpisode&limit=10`
           )}`
         )
-        const podcast = data.feed.entry.map((entry: any) => {
-          return {
-            id: entry.id.attributes["im:id"],
-            title: entry.title.label,
-            image: entry["im:image"][2].label,
-            summary: entry.summary.label,
-            country: entry["im:country"].label,
-            genres: entry.category.attributes.label.split(", "),
-          }
-        })
+        const podcast = JSON.parse(data.contents)
+        console.log("One podcast info", podcast)
         setPodcast(podcast)
       } catch (error) {
         setError(true)
