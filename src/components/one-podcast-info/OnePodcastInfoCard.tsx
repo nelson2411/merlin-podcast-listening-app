@@ -4,6 +4,8 @@ import { OnePodcastInfo, PodcastInfo } from "../../types/podcastType"
 import {
   OnePodcastInfoCardContainer,
   PodcastCreatorContainer,
+  PodcastEpisodesContainer,
+  PodcastEpisodeSoloContainer,
 } from "./OnePodcastInfoCard.styles"
 
 type Params = {
@@ -19,6 +21,17 @@ const OnePodcastInfoCard = ({ id }: Params) => {
     const length = podcast.results.length
     console.log("length", length)
     return length
+  }
+
+  // Only one audio can be played at a time
+
+  const handlePlay = (e: React.MouseEvent<HTMLAudioElement, MouseEvent>) => {
+    const audioElements = document.querySelectorAll("audio")
+    audioElements.forEach((audio) => {
+      if (audio !== e.currentTarget) {
+        audio.pause()
+      }
+    })
   }
 
   return (
@@ -39,17 +52,14 @@ const OnePodcastInfoCard = ({ id }: Params) => {
       )}
 
       {/* We define the list of podcasts */}
-      <div>
+      <PodcastEpisodesContainer>
+        {loading && <p>Loading...</p>}
         {podcast && (
           <div>
-            <h2>Episodes: </h2>
-            <p>Number of episodes: {calculateLenghtItems(podcast)}</p>
+            <h2>Episodes: {calculateLenghtItems(podcast)}</h2>
 
             {podcast?.results.slice(1).map((podcast: PodcastInfo) => (
-              <div key={podcast.trackId}>
-                <p>{podcast.trackId} </p>
-                <img src={podcast.artworkUrl160} alt="podcast" />
-
+              <PodcastEpisodeSoloContainer key={podcast.trackId}>
                 <h3>Episode: {podcast.trackName}</h3>
                 <p>{podcast.shortDescription}</p>
                 <p>
@@ -60,11 +70,16 @@ const OnePodcastInfoCard = ({ id }: Params) => {
                     .reverse()
                     .join("/")}
                 </p>
-              </div>
+                <audio
+                  controls
+                  src={podcast.previewUrl}
+                  onPlay={handlePlay}
+                ></audio>
+              </PodcastEpisodeSoloContainer>
             ))}
           </div>
         )}
-      </div>
+      </PodcastEpisodesContainer>
     </OnePodcastInfoCardContainer>
   )
 }
