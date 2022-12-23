@@ -1,12 +1,16 @@
 import React from "react"
-import logo from "./logo.svg"
+import { Route, Switch } from "react-router-dom"
 import "./App.css"
-import GridData from "./components/grid-data/GridData"
+import Home from "./pages/home/Home"
+import OnePodcastInfo from "./pages/solo-podcast/OnePodcastInfo"
 
 function App() {
   return (
     <div>
-      <GridData />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/podcast/:id" component={OnePodcastInfo} />
+      </Switch>
     </div>
   )
 }
