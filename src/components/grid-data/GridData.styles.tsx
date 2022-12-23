@@ -18,6 +18,7 @@ export const PodcastCard = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   margin: 10px 25px;
   padding: 20px 25px;
+  background-color: white;
 
   &:hover {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
