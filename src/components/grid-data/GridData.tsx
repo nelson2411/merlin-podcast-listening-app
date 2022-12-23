@@ -2,6 +2,7 @@ import React from "react"
 import { useAllPodcasts } from "../../hooks/useAllPodcasts"
 import { Podcast } from "../../types/podcastType"
 import { Link } from "react-router-dom"
+import { Grid, PodcastCard } from "./GridData.styles"
 
 const GridData = () => {
   const { podcasts, error, loading } = useAllPodcasts()
@@ -13,17 +14,19 @@ const GridData = () => {
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       {podcasts && (
-        <ul>
+        <Grid>
           {podcasts.map((podcast: Podcast) => (
-            <li key={podcast.id.attributes["im:id"]}>
+            <PodcastCard key={podcast.id.attributes["im:id"]}>
               <Link to={`/podcast/${podcast.id.attributes["im:id"]}`}>
                 <img src={podcast["im:image"][0]?.label} alt="" />
               </Link>
-              <h2>{podcast["im:name"].label}</h2>
+              <Link to={`/podcast/${podcast.id.attributes["im:id"]}`}>
+                <h2>{podcast["im:name"].label}</h2>
+              </Link>
               <h4>Author: {podcast["im:artist"].label}</h4>
-            </li>
+            </PodcastCard>
           ))}
-        </ul>
+        </Grid>
       )}
     </div>
   )

@@ -132,6 +132,8 @@ export type PodcastInfo = {
   shortDescription: string
   artworkUrl160: string
   releaseDate: string
+  trackViewUrl: string
+  previewUrl: string
 }
 type ReleaseDate = {
   label: string
