@@ -15,6 +15,7 @@ export const PodcastCreatorContainer = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   padding: 30px 20px;
   height: 500px;
+  background-color: white;
 
   & > img {
     margin: 0 auto;
@@ -43,8 +44,11 @@ export const PodcastEpisodesContainer = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
   margin-bottom: 20px;
+  background-color: white;
 `
 
 export const PodcastEpisodeSoloContainer = styled.div`
   border-bottom: 1px solid #ccc;
+  padding: 20px 10px;
+  background-color: white;
 `

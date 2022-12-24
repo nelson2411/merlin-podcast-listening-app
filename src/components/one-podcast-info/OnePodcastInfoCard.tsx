@@ -1,6 +1,7 @@
 import React from "react"
 import { useOnePodcast } from "../../hooks/useOnePodcast"
 import { OnePodcastInfo, PodcastInfo } from "../../types/podcastType"
+import { Link } from "react-router-dom"
 import {
   OnePodcastInfoCardContainer,
   PodcastCreatorContainer,
@@ -16,6 +17,7 @@ const OnePodcastInfoCard = ({ id }: Params) => {
   const { podcast, error, loading } = useOnePodcast(id)
   console.log("img", podcast?.results[0].artworkUrl100)
   console.log("From component Info One", podcast)
+  console.log("trackId", podcast?.results[0].trackId)
 
   const calculateLenghtItems = (podcast: OnePodcastInfo) => {
     const length = podcast.results.length
@@ -60,7 +62,9 @@ const OnePodcastInfoCard = ({ id }: Params) => {
 
             {podcast?.results.slice(1).map((podcast: PodcastInfo) => (
               <PodcastEpisodeSoloContainer key={podcast.trackId}>
-                <h3>Episode: {podcast.trackName}</h3>
+                <Link to={`/podcast/${id}/episode/${podcast.trackId}`}>
+                  <h3>Episode: {podcast.trackName}</h3>
+                </Link>
                 <p>{podcast.shortDescription}</p>
                 <p>
                   Release date:{" "}
