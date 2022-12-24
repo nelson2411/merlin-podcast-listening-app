@@ -135,6 +135,45 @@ export type PodcastInfo = {
   trackViewUrl: string
   previewUrl: string
 }
-type ReleaseDate = {
-  label: string
+
+export type Results = {
+  results: Episode[]
+}
+
+export interface Episode {
+  wrapperType: string
+  kind: string
+  artistId: number
+  collectionId: number
+  trackId: string
+  artistName: string
+  collectionName: string
+  trackName: string
+  collectionCensoredName: string
+  trackCensoredName: string
+  artistViewUrl: string
+  collectionViewUrl: string
+  trackViewUrl: string
+  previewUrl: string
+  artworkUrl30: string
+  artworkUrl60: string
+  artworkUrl100: string
+  collectionPrice: number
+  trackPrice: number
+  releaseDate: string
+  collectionExplicitness: string
+  trackExplicitness: string
+  discCount: number
+  discNumber: number
+  trackCount: number
+  trackNumber: number
+  trackTimeMillis: number
+  country: string
+  currency: string
+  primaryGenreName: string
+  contentAdvisoryRating: string
+  artworkUrl600: string
+  genreIds: string[]
+  genres: string[]
+  description: string
 }

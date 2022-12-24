@@ -1,49 +1,39 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { Podcast } from "../types/podcastType"
-import { version } from "punycode"
+import { Episode, Results } from "../types/podcastType"
 
 /*
 Create a hook that uses useEffect to fetch a single podcast episode from the iTunes API.
 url to be used: 
-`https://api.allorigins.win/get?url=${encodeURIComponent('https://itunes.apple.com/lookup?=id=${id}&media=podcast&entity=podcastEpisode')}`
 
+https://itunes.apple.com/lookup?id=1460157002&limit=1&entity=podcastEpisode&trackId=1000590564956&attribute=episodeTerm
+
+The hook must take two parameters: the podcast id and the episode id.
+Episode is an array of objects. The object we need is the first one in the array.
 
 */
 
-export const useOnePodcastEpisode = (id: number) => {
-  const [podcast, setPodcast] = useState<Podcast>()
-  const [error, setError] = useState<boolean>(false)
-  const [loading, setLoading] = useState<boolean>(false)
+export const useOnePodcastEpisode = (podcastId: string, episodeId: string) => {
+  const [episode, setEpisode] = useState<Episode[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
-    const fetchPodcast = async () => {
+    const fetchEpisode = async () => {
       try {
-        setLoading(true)
-        const { data } = await axios.get(
-          `https://api.allorigins.win/get?url=${encodeURIComponent(
-            `https://itunes.apple.com/lookup?id=${id}&entity=podcast`
-          )}`
+        const response = await axios.get(
+          `https://itunes.apple.com/lookup?id=${podcastId}&limit=1&entity=podcastEpisode&trackId=${episodeId}&attribute=episodeTerm`
         )
-        const podcast = data.feed.entry.map((entry: any) => {
-          return {
-            id: entry.id.attributes["im:id"],
-            title: entry.title.label,
-            image: entry["im:image"][2].label,
-            summary: entry.summary.label,
-            country: entry["im:country"].label,
-            genres: entry.category.attributes.label.split(", "),
-          }
-        })
-        setPodcast(podcast)
+        setEpisode(response.data.results)
+        console.log("Hook", response.data.results)
+
+        setLoading(false)
       } catch (error) {
         setError(true)
-      } finally {
-        setLoading(false)
       }
     }
-    fetchPodcast()
-  }, [id])
+    fetchEpisode()
+  }, [podcastId, episodeId])
 
-  return { podcast, error, loading }
+  return { episode, loading, error }
 }
