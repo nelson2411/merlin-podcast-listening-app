@@ -39,7 +39,10 @@ const GridData = () => {
               if (searchTerm === "") {
                 return podcast
               } else if (
-                podcast["im:name"].label &&
+                // The filter works based on the name of the podcast and the author
+                podcast["im:name"].label
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase()) ||
                 podcast["im:artist"].label
                   .toLowerCase()
                   .includes(searchTerm.toLowerCase())
