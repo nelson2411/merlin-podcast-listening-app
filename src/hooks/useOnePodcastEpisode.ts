@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { Episode, Results } from "../types/podcastType"
+import { Episode } from "../types/podcastType"
 
 /*
-Create a hook that uses useEffect to fetch a single podcast episode from the iTunes API.
+Here we create a hook that uses useEffect to fetch a single podcast episode from the iTunes API.
 url to be used: 
 
 https://itunes.apple.com/lookup?id=1460157002&limit=1&entity=podcastEpisode&trackId=1000590564956&attribute=episodeTerm

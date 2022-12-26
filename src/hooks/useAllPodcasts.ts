@@ -3,7 +3,7 @@ import { Podcast } from "../types/podcastType"
 import axios from "axios"
 
 /* 
-Create a hook that uses useEffect to fetch all top 100 podcasts from 
+We need to create a hook that uses useEffect to fetch all top 100 podcasts from 
 the iTunes API.. 
 
 itunes url for fetching top 100 podcasts: 

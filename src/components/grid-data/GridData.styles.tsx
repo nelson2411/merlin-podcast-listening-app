@@ -49,3 +49,8 @@ export const BarsSVG = styled.svg`
   top: 30%;
   left: 50%;
 `
+
+export const SearchBarBox = styled.input`
+  display: flex;
+  justify-content: end;
+`
