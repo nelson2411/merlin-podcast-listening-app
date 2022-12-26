@@ -155,9 +155,6 @@ export interface Episode {
   collectionViewUrl: string
   trackViewUrl: string
   previewUrl: string
-  artworkUrl30: string
-  artworkUrl60: string
-  artworkUrl100: string
   collectionPrice: number
   trackPrice: number
   releaseDate: string
@@ -172,8 +169,16 @@ export interface Episode {
   currency: string
   primaryGenreName: string
   contentAdvisoryRating: string
-  artworkUrl600: string
   genreIds: string[]
-  genres: string[]
+  genres: Genres[]
   description: string
+  shortDescription: string
+  artworkUrl60: string
+  artworkUrl160: string
+  artworkUrl600: string
+}
+
+type Genres = {
+  id: number
+  name: string
 }
