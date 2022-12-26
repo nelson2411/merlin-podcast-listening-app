@@ -1,5 +1,7 @@
 import React from "react"
 import NavBar from "../navbar/NavBar"
+import Footer from "../footer/Footer"
+import { LayoutContainer } from "./Layout.styles"
 
 /* 
 The intention here is to create a resusable layout component that can be used in other components
@@ -12,10 +14,11 @@ interface Children {
 
 const Layout = ({ children }: Children) => {
   return (
-    <div>
+    <LayoutContainer>
       <NavBar />
       {children}
-    </div>
+      <Footer />
+    </LayoutContainer>
   )
 }
 

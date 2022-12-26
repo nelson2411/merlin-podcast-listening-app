@@ -2,16 +2,26 @@ import React from "react"
 import { useAllPodcasts } from "../../hooks/useAllPodcasts"
 import { Podcast } from "../../types/podcastType"
 import { Link } from "react-router-dom"
-import { Grid, PodcastCard } from "./GridData.styles"
-
+import {
+  Grid,
+  PodcastCard,
+  ComponentContainer,
+  BarsSVG,
+} from "./GridData.styles"
+// @ts-ignore
+import { Bars } from "svg-loaders-react"
 const GridData = () => {
   const { podcasts, error, loading } = useAllPodcasts()
   // destructuring the object returned by useAllPodcasts()
 
   return (
-    <div>
+    <ComponentContainer>
       {/* The map must be done from feed.entry in order to render the data */}
-      {loading && <p>Loading...</p>}
+      {loading && (
+        <BarsSVG>
+          <Bars fill="#000" />
+        </BarsSVG>
+      )}
       {error && <p>Error: {error}</p>}
       {podcasts && (
         <Grid>
@@ -28,7 +38,7 @@ const GridData = () => {
           ))}
         </Grid>
       )}
-    </div>
+    </ComponentContainer>
   )
 }
 

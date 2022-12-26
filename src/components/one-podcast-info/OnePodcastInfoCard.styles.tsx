@@ -5,6 +5,7 @@ export const OnePodcastInfoCardContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 5px;
   justify-items: center;
+  min-height: 80vh;
 `
 
 export const PodcastCreatorContainer = styled.div`
@@ -51,4 +52,27 @@ export const PodcastEpisodeSoloContainer = styled.div`
   border-bottom: 1px solid #ccc;
   padding: 20px 10px;
   background-color: white;
+`
+
+export const Button = styled.button`
+  border-radius: 5px;
+  border: none;
+  padding: 0.9rem 1.9rem;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  &:hover {
+    cursor: pointer;
+    background-color: lightgray;
+    color: white;
+    font-weight: bold;
+  }
+`
+
+export const BarsContainer = styled.div`
+  position: relative;
+  margin: 0 auto;
 `

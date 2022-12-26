@@ -12,7 +12,6 @@ const OnePodcastInfo = () => {
   const { id } = useParams<Params>()
   return (
     <Layout>
-      <h1>One podcast info</h1>
       <OnePodcastInfoCard id={id} />
     </Layout>
   )

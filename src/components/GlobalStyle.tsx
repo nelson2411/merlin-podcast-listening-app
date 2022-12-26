@@ -11,8 +11,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Rubik', sans-serif;
+  height: 100vh;
   
 }
+
+
 
 `
 

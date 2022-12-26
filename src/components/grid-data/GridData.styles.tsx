@@ -2,6 +2,10 @@ import styled from "styled-components"
 
 // Create a grid for the podcasts to be displayed
 
+export const ComponentContainer = styled.div`
+  min-height: 90vh;
+`
+
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -38,4 +42,10 @@ export const PodcastCard = styled.div`
   & > h4 {
     margin: 9px 0;
   }
+`
+
+export const BarsSVG = styled.svg`
+  position: absolute;
+  top: 30%;
+  left: 50%;
 `
