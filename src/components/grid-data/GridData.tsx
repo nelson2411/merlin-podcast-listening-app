@@ -1,4 +1,5 @@
 import React from "react"
+import { useMemo, useCallback } from "react"
 import { useAllPodcasts } from "../../hooks/useAllPodcasts"
 import { Podcast } from "../../types/podcastType"
 import { Link } from "react-router-dom"
@@ -7,14 +8,14 @@ import {
   PodcastCard,
   ComponentContainer,
   BarsSVG,
-  SearchBarBox,
 } from "./GridData.styles"
 // @ts-ignore
 import { Bars } from "svg-loaders-react"
 import SearchBar from "../search-bar/SearchBar"
 const GridData = () => {
-  const { podcasts, error, loading } = useAllPodcasts()
-  // destructuring the object returned by useAllPodcasts()
+  const memoizedUseAllPodcasts = useCallback(useAllPodcasts, [])
+
+  const { loading, error, podcasts } = memoizedUseAllPodcasts()
 
   const [searchTerm, setSearchTerm] = React.useState("")
 
@@ -36,9 +37,8 @@ const GridData = () => {
         <Grid>
           {podcasts
             .filter((podcast: Podcast) => {
-              if (searchTerm === "") {
-                return podcast
-              } else if (
+              if (searchTerm === "") return podcast
+              else if (
                 // The filter works based on the name of the podcast and the author
                 podcast["im:name"].label
                   .toLowerCase()
@@ -49,6 +49,7 @@ const GridData = () => {
               ) {
                 return podcast
               }
+              return false
             })
             .map((podcast: Podcast) => (
               <PodcastCard key={podcast.id.attributes["im:id"]}>

@@ -1,4 +1,5 @@
 import React from "react"
+import { useCallback } from "react"
 import { useOnePodcast } from "../../hooks/useOnePodcast"
 import { OnePodcastInfo, PodcastInfo } from "../../types/podcastType"
 import { Link, useHistory } from "react-router-dom"
@@ -19,7 +20,10 @@ type Params = {
 }
 
 const OnePodcastInfoCard = ({ id }: Params) => {
-  const { podcast, error, loading } = useOnePodcast(id)
+  const memoizedUseOnePodcast = useCallback(useOnePodcast, [])
+
+  const { podcast, error, loading } = memoizedUseOnePodcast(id)
+
   const history = useHistory()
 
   const calculateLenghtItems = (podcast: OnePodcastInfo) => {
