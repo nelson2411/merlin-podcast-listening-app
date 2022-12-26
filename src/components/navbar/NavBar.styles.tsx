@@ -6,6 +6,8 @@ export const NavBarContainer = styled.nav`
   justify-content: space-between;
   height: 60px;
   align-items: center;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
   & > a {
     text-decoration: none;
