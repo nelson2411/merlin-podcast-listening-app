@@ -1,4 +1,4 @@
-import { Podcast, OnePodcastInfo } from "../types/podcastType"
+import { OnePodcastInfo } from "../types/podcastType"
 import { useState, useEffect } from "react"
 import axios from "axios"
 

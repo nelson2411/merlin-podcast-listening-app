@@ -5,6 +5,11 @@ import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 import { BrowserRouter } from "react-router-dom"
 
+/*
+In React 18, the root component is now a Suspense boundary.
+We must wrap the <React.StrictMode> component with a <BrowserRouter> component.
+*/
+
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
   <BrowserRouter>

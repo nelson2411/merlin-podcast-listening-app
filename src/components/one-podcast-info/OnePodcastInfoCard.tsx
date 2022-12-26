@@ -21,13 +21,9 @@ type Params = {
 const OnePodcastInfoCard = ({ id }: Params) => {
   const { podcast, error, loading } = useOnePodcast(id)
   const history = useHistory()
-  console.log("img", podcast?.results[0].artworkUrl100)
-  console.log("From component Info One", podcast)
-  console.log("trackId", podcast?.results[0].trackId)
 
   const calculateLenghtItems = (podcast: OnePodcastInfo) => {
     const length = podcast.results.length
-    console.log("length", length)
     return length
   }
 

@@ -1,7 +1,6 @@
 import React from "react"
 import { useOnePodcastEpisode } from "../../hooks/useOnePodcastEpisode"
-import { Link, useHistory } from "react-router-dom"
-import { Episode } from "../../types/podcastType"
+import { useHistory } from "react-router-dom"
 import {
   ComponentContainer,
   PodcasterInfo,
@@ -19,9 +18,6 @@ type Params = {
 const OneEpisode = ({ trackId, id }: Params) => {
   const { episode, loading, error } = useOnePodcastEpisode(id, trackId)
   const history = useHistory()
-  console.log(episode)
-  console.log("trackId-episode", episode[0]?.trackId)
-  console.log("trackId-params", episode[1]?.trackName)
   return (
     <>
       {/* Go to previous page */}
