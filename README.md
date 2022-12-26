@@ -1,21 +1,16 @@
-
 # The Podcaster App
 
-Web podcast player application created with React18 and TypeScript. Hosted on Vercel. 
+Web podcast player application created with React18 and TypeScript. Hosted on Vercel.
 
-
-You can visit the web app [here](https://next-typescript-countries-v3.vercel.app/). 
+You can visit the web app [here](https://merlin-podcast-listening-app.vercel.app/).
 
 ![Logo](https://i.ibb.co/K6nVfLz/nelson-logo.png)
-
-
 
 ## Tech Stack
 
 **Client:** React18, Typescript, Styled-components and React-routerv5
 
 **DevOps:** Vercel
-
 
 ## Run Locally
 
@@ -43,8 +38,6 @@ Start the development environment
   npm run start
 ```
 
-
 ## Author
 
 - [@nelson2411](https://github.com/nelson2411)
-
