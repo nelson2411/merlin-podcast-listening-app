@@ -26,8 +26,10 @@ export const useOnePodcast = (id: string) => {
         const { data } = await axios.get(
           `https://api.allorigins.win/get?url=${encodeURIComponent(
             `https://itunes.apple.com/lookup?id=${id}&entity=podcastEpisode&limit=20`
-          )}`
+          )}`,
+          { headers: { "x-requested-with": "https://itunes.apple.com" } }
         )
+
         const podcast = JSON.parse(data.contents)
         console.log("One podcast info", podcast)
         setPodcast(podcast)

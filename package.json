@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "cy:open": "cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,5 +49,8 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@cypress/react": "^7.0.2",
+    "cypress": "^12.2.0"
+  }
 }
