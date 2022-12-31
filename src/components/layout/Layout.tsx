@@ -14,7 +14,7 @@ interface Children {
 
 const Layout = ({ children }: Children) => {
   return (
-    <LayoutContainer>
+    <LayoutContainer cy-data="layout">
       <NavBar />
       {children}
       <Footer />
