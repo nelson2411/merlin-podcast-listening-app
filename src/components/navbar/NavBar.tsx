@@ -5,14 +5,12 @@ import { NavBarContainer } from "./NavBar.styles"
 
 const NavBar = () => {
   return (
-    <Router>
-      <NavBarContainer>
-        <Link to="/" data-cy="home-link">
-          The Podcaster
-        </Link>
-        <FaPodcast data-cy="podcast-icon" />
-      </NavBarContainer>
-    </Router>
+    <NavBarContainer>
+      <Link to="/" data-cy="home-link">
+        The Podcaster
+      </Link>
+      <FaPodcast data-cy="podcast-icon" />
+    </NavBarContainer>
   )
 }
 
