@@ -42,6 +42,18 @@ export const PodcastCard = styled.div`
   & > h4 {
     margin: 9px 0;
   }
+
+  @media (max-width: 768px) {
+    margin: 10px 0;
+
+    & > a {
+      color: blue;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
 `
 
 export const BarsSVG = styled.svg`

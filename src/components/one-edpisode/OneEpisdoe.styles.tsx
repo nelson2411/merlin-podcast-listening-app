@@ -7,6 +7,10 @@ export const ComponentContainer = styled.div`
   grid-gap: 1rem;
   padding: 2rem;
   margin: 50px auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const PodcasterInfo = styled.div`
@@ -25,6 +29,10 @@ export const PodcasterInfo = styled.div`
   & > ul > li {
     margin-right: 1rem;
   }
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `
 
 export const EpisodeInfo = styled.div`
@@ -37,6 +45,11 @@ export const EpisodeInfo = styled.div`
   & > audio {
     width: 100%;
     border-radius: 7px;
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 `
 export const Button = styled.button`

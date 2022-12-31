@@ -6,6 +6,10 @@ export const OnePodcastInfoCardContainer = styled.div`
   grid-gap: 5px;
   justify-items: center;
   min-height: 80vh;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const PodcastCreatorContainer = styled.div`
@@ -37,6 +41,10 @@ export const PodcastCreatorContainer = styled.div`
   & > ul > li {
     margin: 5px 0;
   }
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `
 
 export const PodcastEpisodesContainer = styled.div`
@@ -46,12 +54,25 @@ export const PodcastEpisodesContainer = styled.div`
   padding: 10px 20px;
   margin-bottom: 20px;
   background-color: white;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `
 
 export const PodcastEpisodeSoloContainer = styled.div`
   border-bottom: 1px solid #ccc;
   padding: 20px 10px;
   background-color: white;
+
+  @media (max-width: 768px) {
+    padding: 10px 5px;
+
+    & > audio {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
 `
 
 export const Button = styled.button`
