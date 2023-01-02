@@ -23,6 +23,7 @@ const GridData = () => {
     setSearchTerm(e.target.value)
   }
 
+  console.log(podcasts)
   return (
     <ComponentContainer>
       <SearchBar handleChange={handleChange} onSubmit={searchTerm} />

@@ -7,9 +7,10 @@ We need to create a hook that uses useEffect to fetch a single podcast from
 the iTunes API.
 
 URL fetch example: 
-https://api.allorigins.win/get?url=${encodeURIComponent('https://itunes.apple.com/lookup?id=${id}&entity=podcastAuthor
-
+https://itunes.apple.com/lookup?id=1633466636&entity=podcastAuthor
 id must be a number and the parameter used to fetch a single podcast is "id"
+https://itunes.apple.com/lookup?id=1633466636&entity=podcastEpisode&attribute=podcastAuthor
+
 
 
 */
@@ -24,13 +25,10 @@ export const useOnePodcast = (id: string) => {
       try {
         setLoading(true)
         const { data } = await axios.get(
-          `https://api.allorigins.win/get?url=${encodeURIComponent(
-            `https://itunes.apple.com/lookup?id=${id}&entity=podcastEpisode&limit=20`
-          )}`,
-          { headers: { "x-requested-with": "https://itunes.apple.com" } }
+          `https://itunes.apple.com/lookup?id=${id}&entity=podcastEpisode&attribute=podcastAuthor`
         )
 
-        const podcast = JSON.parse(data.contents)
+        const podcast = data
         console.log("One podcast info", podcast)
         setPodcast(podcast)
       } catch (error) {
